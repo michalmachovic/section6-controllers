@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const app = express();
 
 const shopRoutes = require('./routes/shop');
-const adminData = require('./routes/admin');
+const adminRoutes = require('./routes/admin');
 
 //set template engine to EJS
 app.set('view engine', 'ejs');
@@ -13,7 +13,7 @@ app.set('views', 'views');
 
 app.use(bodyParser.urlencoded({exteneded: false}));
 app.use(shopRoutes);
-app.use('/admin', adminData.routes);
+app.use('/admin', adminRoutes);
 
 //add this to make public folder available to serve static files, like css
 app.use(express.static(path.join(__dirname, 'public')));
